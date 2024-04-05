@@ -26,8 +26,12 @@ Vagrant.configure("2") do |config|
       
       if "#{name}" == "master"
         machine.vm.provision "shell", path: "master.sh"
+        sudo apt-get update
+        sudo apt-get install -y docker.io
       else
         machine.vm.provision "shell", path: "worker.sh"
+        sudo apt-get update
+        sudo apt-get install -y docker.io
       end
 
     end
